@@ -1,0 +1,55 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_fragment_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_fragment_bg"
+    tools:context=".view.MainPictureFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/search_wiki"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:helperText="@string/wiki_helper_text"
+        app:helperTextTextColor="@color/white"
+        app:counterTextColor="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/hint_text_color"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_baseline_check"
+        app:endIconTint="@color/icon_check"
+        app:startIconTintMode="multiply"
+        app:endIconCheckable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/main_image_view">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <q3_kotlin.material_design.myPictureOfTheDay.utils.EquilateralImageView
+        android:id="@+id/main_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:contentDescription="@string/main_photo"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_no_photo_img" />
+
+    <include
+        android:id="@+id/includedLoadingLayout"
+        layout="@layout/loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

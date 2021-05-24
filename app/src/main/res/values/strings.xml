@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MyPictureOfTheDay</string>
+    <string name="main_photo">Main Photo Of The Day</string>
+    <string name="wiki_helper_text">Type Here smth to see it in wiki</string>
+    <string name="search_wiki">Search Wiki</string>
+</resources>
