@@ -61,11 +61,21 @@ class MainPictureFragment : Fragment() {
                 if (url.isNullOrEmpty()) {
                     toast("Link is empty")
                 } else {
-                    binding.mainImageView.visibility = View.VISIBLE
-                    binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
-                    showSuccess(url)
+                    if (url.contains("youtube.com")) {
 
-                    binding.inputEditText.setTextColor(resources.getColor(R.color.white))
+                        // Если у нас видео приходит, то предлагаем открыть Ютуб!
+                        startActivity(Intent(Intent.ACTION_VIEW).apply {
+                            setData(Uri.parse(url))
+                        })
+                        binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
+
+                    } else {
+                        binding.mainImageView.visibility = View.VISIBLE
+                        binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
+                        showSuccess(url)
+
+                        binding.inputEditText.setTextColor(resources.getColor(R.color.white))
+                    }
                 }
             }
             is PODAppState.Loading -> {
@@ -84,7 +94,7 @@ class MainPictureFragment : Fragment() {
         binding.mainImageView.load(url) {
             lifecycle(this@MainPictureFragment)
             error(R.drawable.ic_launcher_background)
-          //  placeholder(R.drawable.ic_no_photo_img)
+            //  placeholder(R.drawable.ic_no_photo_img)
         }
     }
 
