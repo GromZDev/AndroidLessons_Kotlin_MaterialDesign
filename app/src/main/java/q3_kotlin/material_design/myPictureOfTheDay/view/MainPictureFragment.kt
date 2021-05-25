@@ -10,11 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import q3_kotlin.material_design.myPictureOfTheDay.R
 import q3_kotlin.material_design.myPictureOfTheDay.databinding.FragmentMainPictureBinding
+import q3_kotlin.material_design.myPictureOfTheDay.model.PictureServerResponseData
 import q3_kotlin.material_design.myPictureOfTheDay.viewModel.appState.PODAppState
 import q3_kotlin.material_design.myPictureOfTheDay.viewModel.mainViewModel.PictureOfTheDayViewModel
 
@@ -27,6 +30,8 @@ class MainPictureFragment : Fragment() {
     private val viewModel: PictureOfTheDayViewModel by lazy {
         ViewModelProvider(this).get(PictureOfTheDayViewModel::class.java)
     }
+
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +56,9 @@ class MainPictureFragment : Fragment() {
             })
         }
 // =============================================================================================
+
+        setBottomSheetBehavior(binding.includedBottomSheetLayout.bottomSheetContainer)
+
     }
 
     private fun renderData(data: PODAppState) {
@@ -68,6 +76,7 @@ class MainPictureFragment : Fragment() {
                             setData(Uri.parse(url))
                         })
                         binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
+                        setDataToBottomSheet(serverResponseData)
 
                     } else {
                         binding.mainImageView.visibility = View.VISIBLE
@@ -75,6 +84,8 @@ class MainPictureFragment : Fragment() {
                         showSuccess(url)
 
                         binding.inputEditText.setTextColor(resources.getColor(R.color.white))
+
+                        setDataToBottomSheet(serverResponseData)
                     }
                 }
             }
@@ -114,4 +125,19 @@ class MainPictureFragment : Fragment() {
             show()
         }
     }
+
+    // ===================== Метод инициации bottomSheet и его поведения =====================
+    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
+// ========================================================================================
+
+    private fun setDataToBottomSheet(serverResponseData: PictureServerResponseData) {
+        binding.includedBottomSheetLayout.bottomSheetDescriptionHeader.text =
+            serverResponseData.title
+        binding.includedBottomSheetLayout.bottomSheetDescription.text =
+            serverResponseData.explanation
+    }
+
 }
