@@ -61,4 +61,8 @@
         android:id="@+id/includedBottomSheetLayout"
         layout="@layout/bottom_sheet_layout" />
 
+    <include
+        android:id="@+id/includedBottomBarLayout"
+        layout="@layout/bottom_bar_layout" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,11 +4,8 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
-import android.view.Gravity
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
@@ -33,6 +30,29 @@ class MainPictureFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
+
+// ============== Ищем и сетим нижнее меню Bottom Bar ===========================
+// ============== Обязательно вставляем его в лэйаут фрагмента!!! ===============
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.bottom_bar_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.app_bar_fav -> toast("Favourite")
+            R.id.app_bar_settings -> toast("Settings")
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setBottomAppBar(view: View) {
+        val context = activity as MainActivity
+        context.setSupportActionBar(view.findViewById(R.id.bottom_bar))
+        setHasOptionsMenu(true)
+    }
+// ==============================================================================
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,8 +65,11 @@ class MainPictureFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel.getData().observe(viewLifecycleOwner,
             Observer { renderData(it) })
+
+        setBottomSheetBehavior(binding.includedBottomSheetLayout.bottomSheetContainer)
 
 // == Юзер сможет по нажатию на иконку переходить в браузер и открывать запрос в «Википедии»: ==
         binding.inputLayout.setEndIconOnClickListener {
@@ -57,8 +80,13 @@ class MainPictureFragment : Fragment() {
         }
 // =============================================================================================
 
-        setBottomSheetBehavior(binding.includedBottomSheetLayout.bottomSheetContainer)
+        setBottomAppBar(view)
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun renderData(data: PODAppState) {
