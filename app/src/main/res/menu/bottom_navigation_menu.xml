@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/navigation_one"
+            android:icon="@drawable/ic_baseline_assignment"
+            android:title="@string/item_drawer_1" />
+        <item
+            android:id="@+id/navigation_two"
+            android:icon="@drawable/ic_baseline_assignment"
+            android:title="@string/item_drawer_2" />
+    </group>
+</menu>

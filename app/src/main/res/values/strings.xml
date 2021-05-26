@@ -6,4 +6,6 @@
     <string name="fab">TODO</string>
     <string name="favourite">Любимые</string>
     <string name="settings">Настройки</string>
+    <string name="item_drawer_1">Идём сюда</string>
+    <string name="item_drawer_2">Идём туда</string>
 </resources>

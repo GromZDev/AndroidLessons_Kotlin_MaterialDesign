@@ -42,6 +42,11 @@ class MainPictureFragment : Fragment() {
         when (item.itemId) {
             R.id.app_bar_fav -> toast("Favourite")
             R.id.app_bar_settings -> toast("Settings")
+            android.R.id.home -> {
+                activity?.let {
+                    BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
