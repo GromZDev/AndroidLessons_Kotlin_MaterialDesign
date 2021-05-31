@@ -1,7 +1,6 @@
 package q3_kotlin.material_design.myPictureOfTheDay.view
 
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -31,7 +30,7 @@ class MainPictureFragment : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
 
-// ============== Ищем и сетим нижнее меню Bottom Bar ===========================
+    // ============== Ищем и сетим нижнее меню Bottom Bar ===========================
 // ============== Обязательно вставляем его в лэйаут фрагмента!!! ===============
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -86,6 +85,10 @@ class MainPictureFragment : Fragment() {
 // =============================================================================================
 
         setBottomAppBar(view)
+
+// =================== По нажатии кнопки показываем buttom sheet с описанием ===================
+        setFabButtonToShowDetails()
+// =============================================================================================
 
     }
 
@@ -162,7 +165,27 @@ class MainPictureFragment : Fragment() {
     // ===================== Метод инициации bottomSheet и его поведения =====================
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN // Изначально положение скрыто!
+
+        bottomSheetBehavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_DRAGGING -> toast("Bottom sheet DRAGGING")
+                    BottomSheetBehavior.STATE_COLLAPSED -> toast("Bottom sheet COLLAPSED")
+                    BottomSheetBehavior.STATE_EXPANDED -> toast("Bottom sheet EXPANDED")
+                    BottomSheetBehavior.STATE_HALF_EXPANDED -> toast("Bottom sheet HALF_EXPANDED")
+                    BottomSheetBehavior.STATE_HIDDEN -> toast("Bottom sheet HIDDEN")
+                    BottomSheetBehavior.STATE_SETTLING -> toast("Bottom sheet SETTLING")
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+
+            }
+
+        })
+
     }
 // ========================================================================================
 
@@ -171,6 +194,13 @@ class MainPictureFragment : Fragment() {
             serverResponseData.title
         binding.includedBottomSheetLayout.bottomSheetDescription.text =
             serverResponseData.explanation
+    }
+
+    private fun setFabButtonToShowDetails() {
+        val showDetailsButton = binding.includedBottomBarLayout.bottomBarFab
+        showDetailsButton.setOnClickListener {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
     }
 
 }
