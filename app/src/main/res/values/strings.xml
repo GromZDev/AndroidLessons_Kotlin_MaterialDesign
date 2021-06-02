@@ -9,4 +9,6 @@
     <string name="item_drawer_1">Идём сюда</string>
     <string name="item_drawer_2">Идём туда</string>
     <string name="search">Поиск</string>
+    <string name="show_hd_photo">Show HD Photo</string>
+    <string name="show_simple_photo">Show POD</string>
 </resources>

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import q3_kotlin.material_design.myPictureOfTheDay.R
 import q3_kotlin.material_design.myPictureOfTheDay.databinding.FragmentMainPictureBinding
@@ -93,12 +94,73 @@ class MainPictureFragment : Fragment() {
         setFabButtonToShowDetails()
 // =============================================================================================
 
+// ================= Сетим слушателя нажатия на группу Чипсов и выбираем нужное ================
+        binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
+            val chip: Chip? = group.findViewById(checkedId)
+
+            if (binding.chipHdPhoto.isChecked) {
+                chip?.let {
+                    viewModel.getData().observe(viewLifecycleOwner,
+                        Observer { showHdPhoto(it) })
+                }
+            }
+            if (binding.chipSimplePhoto.isChecked) {
+                chip?.let {
+                    viewModel.getData().observe(viewLifecycleOwner,
+                        Observer { renderData(it) })
+                }
+            }
+        }
+// =============================================================================================
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun showHdPhoto(data: PODAppState) {
+        when (data) {
+            is PODAppState.Success -> {
+                val serverResponseData = data.serverResponseData
+                val hdUrl = serverResponseData.hdurl
+                if (hdUrl.isNullOrEmpty()) {
+                    toast("Link is empty")
+                } else {
+                    if (hdUrl.contains("youtube.com")) {
+
+                        // Если у нас видео приходит, то предлагаем открыть Ютуб!
+                        startActivity(Intent(Intent.ACTION_VIEW).apply {
+                            setData(Uri.parse(hdUrl))
+                        })
+                        binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
+                        setDataToBottomSheet(serverResponseData)
+
+                    } else {
+                        binding.mainImageView.visibility = View.VISIBLE
+                        binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
+                        binding.mainImageView.load(hdUrl) {
+                            lifecycle(this@MainPictureFragment)
+                            error(R.drawable.ic_launcher_background)
+
+                        }
+                        binding.inputLayout.visibility = View.GONE
+
+                    }
+                }
+            }
+            is PODAppState.Loading -> {
+                showLoading()
+            }
+            is PODAppState.Error -> {
+                binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
+                toast("Error in loading img or URL")
+            }
+        }
+
+    }
+
 
     private fun renderData(data: PODAppState) {
         when (data) {
@@ -120,6 +182,7 @@ class MainPictureFragment : Fragment() {
                     } else {
                         binding.mainImageView.visibility = View.VISIBLE
                         binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
+                        binding.inputLayout.visibility = View.VISIBLE
                         showSuccess(url)
 
                         binding.inputEditText.setTextColor(resources.getColor(R.color.white))
