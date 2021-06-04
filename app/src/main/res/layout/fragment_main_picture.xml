@@ -1,50 +1,112 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_fragment_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/main_fragment_bg"
-    tools:context=".view.MainPictureFragment">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="@string/search_wiki"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:helperText="@string/wiki_helper_text"
-        app:helperTextTextColor="@color/white"
-        app:counterTextColor="@color/white"
-        app:boxStrokeColor="@color/white"
-        app:hintTextColor="@color/hint_text_color"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_baseline_check"
-        app:endIconTint="@color/icon_check"
-        app:startIconTintMode="multiply"
-        app:endIconCheckable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/main_image_view">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <q3_kotlin.material_design.myPictureOfTheDay.utils.EquilateralImageView
-        android:id="@+id/main_image_view"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:contentDescription="@string/main_photo"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_no_photo_img" />
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main_fragment_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/main_fragment_bg"
+            tools:context=".view.MainPictureFragment">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/search_wiki"
+                app:boxStrokeColor="@color/white"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:counterTextColor="@color/white"
+                app:endIconCheckable="true"
+                app:endIconDrawable="@drawable/ic_baseline_check"
+                app:endIconMode="custom"
+                app:endIconTint="@color/icon_check"
+                app:helperText="@string/wiki_helper_text"
+                app:helperTextTextColor="@color/white"
+                app:hintTextColor="@color/hint_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconTintMode="multiply">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/chip_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_layout">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipSpacingHorizontal="25dp"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_hd_photo"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/show_hd_photo"
+                            app:chipBackgroundColor="@color/hint_text_color"
+                            app:chipIcon="@mipmap/ic_app_icon"
+                            app:rippleColor="@color/teal_700" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_simple_photo"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/show_simple_photo"
+                            app:chipBackgroundColor="@color/hint_text_color"
+                            app:chipIcon="@mipmap/ic_app_icon"
+                            app:rippleColor="@color/teal_700" />
+
+                    </com.google.android.material.chip.ChipGroup>
+                </HorizontalScrollView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <q3_kotlin.material_design.myPictureOfTheDay.utils.EquilateralImageView
+                android:id="@+id/main_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:contentDescription="@string/main_photo"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chip_layout"
+                app:srcCompat="@drawable/ic_no_photo_img" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <include
         android:id="@+id/includedLoadingLayout"
@@ -52,4 +114,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include
+        android:id="@+id/includedBottomSheetLayout"
+        layout="@layout/bottom_sheet_layout" />
+
+    <include
+        android:id="@+id/includedBottomBarLayout"
+        layout="@layout/bottom_bar_layout" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -3,4 +3,12 @@
     <string name="main_photo">Main Photo Of The Day</string>
     <string name="wiki_helper_text">Type Here smth to see it in wiki</string>
     <string name="search_wiki">Search Wiki</string>
+    <string name="fab">TODO</string>
+    <string name="favourite">Любимые</string>
+    <string name="settings">Настройки</string>
+    <string name="item_drawer_1">Идём сюда</string>
+    <string name="item_drawer_2">Идём туда</string>
+    <string name="search">Поиск</string>
+    <string name="show_hd_photo">Show HD Photo</string>
+    <string name="show_simple_photo">Show POD</string>
 </resources>
