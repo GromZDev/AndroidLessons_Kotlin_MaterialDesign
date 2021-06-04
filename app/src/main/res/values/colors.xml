@@ -12,5 +12,10 @@
 
     <color name="icon_check">#08BAD1</color>
     <color name="fab_color">#08BAD1</color>
+    <color name="fab_app_tint">#FFFFFF</color>
+    <color name="bottom_sheet_layout_background">#EAEAB6</color>
+    <color name="bottom_sheet_line_background">#663b4351</color>
+
+
 
 </resources>

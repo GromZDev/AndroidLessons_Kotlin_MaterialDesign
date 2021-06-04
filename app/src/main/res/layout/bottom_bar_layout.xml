@@ -11,7 +11,7 @@
         android:layout_gravity="bottom"
         app:backgroundTint="@color/teal_700"
         app:fabAlignmentMode="center"
-        app:fabCradleRoundedCornerRadius="32dp"
+        app:fabCradleRoundedCornerRadius="@dimen/fabCradleRoundedCornerRadius"
         app:hideOnScroll="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:backgroundTint="@color/fab_color"
         android:contentDescription="@string/fab"
         app:layout_anchor="@id/bottom_bar"
-        app:maxImageSize="36dp"
+        app:maxImageSize="@dimen/fab_image_max_size"
         app:srcCompat="@drawable/ic_baseline_read_more"
-        app:tint="#FFFFFF" />
+        app:tint="@color/fab_app_tint" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,26 @@
+<resources>
+
+    <dimen name="fabCradleRoundedCornerRadius">32dp</dimen>
+    <dimen name="fab_image_max_size">40dp</dimen>
+
+    <dimen name="bottom_sheet_layout_height">400dp</dimen>
+    <dimen name="bottom_sheet_behaviour_peek_height">100dp</dimen>
+    <dimen name="bottom_sheet_line_width">60dp</dimen>
+    <dimen name="bottom_sheet_line_height">4dp</dimen>
+    <dimen name="bottom_sheet_line_margin_top">8dp</dimen>
+    <dimen name="bottom_sheet_title_margin_top">8dp</dimen>
+    <dimen name="bottom_sheet_padding_start_end_center">10dp</dimen>
+    <dimen name="bottom_sheet_description_margin_top">16dp</dimen>
+
+    <dimen name="fragment_main_text_input_layout_width">0dp</dimen>
+    <dimen name="fragment_main_text_input_layout_margin_top">20dp</dimen>
+
+    <dimen name="fragment_main_chips_layout_margin_start_end_center">16dp</dimen>
+    <dimen name="fragment_main_chips_horizontal_scroll_margin_top">16dp</dimen>
+    <dimen name="fragment_main_chips_spacing">32dp</dimen>
+
+    <dimen name="equilateral_Image_View_margin_top">40dp</dimen>
+
+    <dimen name="navigation_drawer_view_margin">8dp</dimen>
+
+</resources>
