@@ -15,6 +15,7 @@
         <item name="android:padding">@dimen/fragment_main_text_input_layout_padding</item>
         <item name="endIconDrawable">@drawable/ic_baseline_check</item>
         <item name="endIconMode">custom</item>
+        <item name="boxBackgroundMode">outline</item>
         <item name="strokeColor">@color/text_input_layout_stroke_color</item>
         <item name="boxStrokeWidth">2dp</item>
     </style>
