@@ -8,7 +8,7 @@
         <item name="boxStrokeColor">@color/text_input_layout_stroke_color</item>
         <item name="counterEnabled">true</item>
         <item name="counterMaxLength">30</item>
-        <item name="counterTextColor">@color/white</item>
+        <item name="counterTextColor">@color/text_counter_color</item>
         <item name="android:layout_marginTop">@dimen/fragment_main_text_input_layout_margin_top
         </item>
         <item name="endIconCheckable">true</item>

@@ -25,4 +25,6 @@
     <color name="navigation_drawer_bg_color">#08BAD1</color>
     <color name="navigation_view_color">#08BAD1</color>
 
+    <color name="text_counter_color">#08BAD1</color>
+
 </resources>
