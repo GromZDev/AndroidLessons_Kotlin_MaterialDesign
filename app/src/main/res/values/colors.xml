@@ -27,4 +27,7 @@
 
     <color name="text_counter_color">#2CED4C</color>
 
+    <color name="settings_button_color">#409A4F</color>
+    <color name="settings_button_stroke_color">#505150</color>
+
 </resources>

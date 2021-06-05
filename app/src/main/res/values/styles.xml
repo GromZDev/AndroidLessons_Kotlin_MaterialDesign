@@ -102,4 +102,25 @@
         <item name="android:background">@color/navigation_drawer_bg_color</item>
     </style>
 
+    <style name="My_Settings_Button">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:backgroundTint">@color/settings_button_color</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="strokeColor">@color/settings_button_stroke_color</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="android:layout_marginTop">@dimen/settings_button_margin_top</item>
+    </style>
+
+    <style name="My_Settings_Text_View">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/top_text_settings_fragment</item>
+        <item name="android:textSize">@dimen/top_text_settings_fragment</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginStart">@dimen/fragment_main_text_input_layout_padding</item>
+        <item name="android:layout_marginEnd">@dimen/fragment_main_text_input_layout_padding</item>
+        <item name="android:layout_marginTop">@dimen/top_text_settings_margin_fragment</item>
+    </style>
+
 </resources>
