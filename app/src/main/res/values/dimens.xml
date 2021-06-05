@@ -14,6 +14,7 @@
 
     <dimen name="fragment_main_text_input_layout_width">0dp</dimen>
     <dimen name="fragment_main_text_input_layout_margin_top">20dp</dimen>
+    <dimen name="fragment_main_text_input_layout_padding">12dp</dimen>
 
     <dimen name="fragment_main_chips_layout_margin_start_end_center">16dp</dimen>
     <dimen name="fragment_main_chips_horizontal_scroll_margin_top">16dp</dimen>

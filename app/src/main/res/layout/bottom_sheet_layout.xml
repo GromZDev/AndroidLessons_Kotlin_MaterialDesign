@@ -11,23 +11,14 @@
 
     <View
         android:id="@+id/bottom_sheet_line"
-        android:layout_width="@dimen/bottom_sheet_line_width"
-        android:layout_height="@dimen/bottom_sheet_line_height"
-        android:layout_marginTop="@dimen/bottom_sheet_line_margin_top"
-        android:background="@color/bottom_sheet_line_background"
+        style="@style/My_Bottom_Sheet_Line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/bottom_sheet_description_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/bottom_sheet_title_margin_top"
-        android:paddingStart="@dimen/bottom_sheet_padding_start_end_center"
-        android:paddingEnd="@dimen/bottom_sheet_padding_start_end_center"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        style="@style/My_Bottom_Sheet_Description_Header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_line"
@@ -35,13 +26,10 @@
 
     <TextView
         android:id="@+id/bottom_sheet_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/bottom_sheet_padding_start_end_center"
-        android:paddingEnd="@dimen/bottom_sheet_padding_start_end_center"
-        android:layout_marginTop="@dimen/bottom_sheet_description_margin_top"
+        style="@style/My_Bottom_Sheet_Description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_description_header"
         tools:text="This lovely starfield spans some four full moons." />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

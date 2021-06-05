@@ -16,18 +16,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="@dimen/fragment_main_text_input_layout_width"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/fragment_main_text_input_layout_margin_top"
-                android:hint="@string/search_wiki"
-                app:boxStrokeColor="@color/white"
-                app:counterEnabled="true"
-                app:counterMaxLength="30"
-                app:counterTextColor="@color/white"
-                app:endIconCheckable="true"
-                app:endIconDrawable="@drawable/ic_baseline_check"
-                app:endIconMode="custom"
+                style="@style/My_Text_Input_Layout"
                 app:endIconTint="@color/icon_check"
                 app:helperText="@string/wiki_helper_text"
                 app:helperTextTextColor="@color/white"
@@ -39,8 +28,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/My_Input_Edit_Text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,10 +49,7 @@
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/chip_group"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:chipSpacingHorizontal="@dimen/fragment_main_chips_spacing"
-                        app:singleSelection="true">
+                        style="@style/My_Chip_Group">
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip_hd_photo"
@@ -93,12 +78,7 @@
 
             <q3_kotlin.material_design.myPictureOfTheDay.utils.EquilateralImageView
                 android:id="@+id/main_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/equilateral_Image_View_margin_top"
-                android:contentDescription="@string/main_photo"
-                android:scaleType="fitCenter"
+                style="@style/My_Equilateral_Image_View"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/chip_layout"

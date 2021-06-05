@@ -1,16 +1,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/My_Navigation_Drawer_Layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="@dimen/navigation_drawer_view_margin"
-        android:layout_marginTop="@dimen/navigation_drawer_view_margin"
-        android:layout_marginEnd="@dimen/navigation_drawer_view_margin"
+        style="@style/My_Navigation_View"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
