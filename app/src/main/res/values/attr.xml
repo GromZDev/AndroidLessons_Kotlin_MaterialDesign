@@ -1,0 +1,5 @@
+<resources>
+
+    <attr name="main_background" format="reference"/>
+
+</resources>

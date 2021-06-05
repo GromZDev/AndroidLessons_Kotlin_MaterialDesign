@@ -12,7 +12,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
         <item name="fontFamily">@font/walter_turncoat</item>
         <item name="android:fontFamily">@font/walter_turncoat</item>
+
+        <item name="main_background">@color/main_fragment_bg</item>
+
     </style>
 </resources>

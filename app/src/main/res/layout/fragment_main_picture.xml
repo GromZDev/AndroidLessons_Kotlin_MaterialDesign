@@ -11,7 +11,7 @@
             android:id="@+id/main_fragment_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/main_fragment_bg"
+            android:background="?main_background"
             tools:context=".view.MainPictureFragment">
 
             <com.google.android.material.textfield.TextInputLayout
