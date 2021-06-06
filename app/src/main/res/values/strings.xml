@@ -14,4 +14,5 @@
     <string name="set_one_theme">Set One Theme</string>
     <string name="set_second_theme">Set Second Theme</string>
     <string name="top_text_settings_fragment">Please select any Theme and press to confirm</string>
+    <string name="set_image_as_background">Set Image as background</string>
 </resources>

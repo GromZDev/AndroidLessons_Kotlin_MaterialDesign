@@ -28,6 +28,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_one" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_change_bg_to_image"
+        style="@style/My_Settings_Button"
+        android:layout_height="wrap_content"
+        android:text="@string/set_image_as_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_two" />
+
     <include
         android:id="@+id/includedBottomBarLayoutSettings"
         layout="@layout/bottom_bar_layout_settings" />

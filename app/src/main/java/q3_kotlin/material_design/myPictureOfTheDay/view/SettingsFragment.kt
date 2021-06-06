@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import q3_kotlin.material_design.myPictureOfTheDay.R
 import q3_kotlin.material_design.myPictureOfTheDay.databinding.FragmentSettingsBinding
 
-class SettingsFragment: Fragment() {
+class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
@@ -48,6 +48,8 @@ class SettingsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setBottomAppBar()
+
+        changeTheme()
     }
 
     override fun onDestroyView() {
@@ -64,5 +66,19 @@ class SettingsFragment: Fragment() {
 
     companion object {
         fun newInstance() = SettingsFragment()
+    }
+
+    private fun changeTheme() {
+        binding.buttonOne.setOnClickListener {
+            activity?.setTheme(R.style.MyPictureOfTheDay_New)
+
+        }
+        binding.buttonTwo.setOnClickListener {
+            activity?.setTheme(R.style.Theme_MyPictureOfTheDay)
+
+        }
+        binding.buttonChangeBgToImage.setOnClickListener {
+            activity?.setTheme(R.style.Image_BG_Theme)
+        }
     }
 }

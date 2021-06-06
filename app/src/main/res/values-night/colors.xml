@@ -30,4 +30,6 @@
     <color name="settings_button_color">#FF018786</color>
     <color name="settings_button_stroke_color">#505150</color>
 
+    <color name="bg_myTheme_New">#8C6EC1</color>
+
 </resources>

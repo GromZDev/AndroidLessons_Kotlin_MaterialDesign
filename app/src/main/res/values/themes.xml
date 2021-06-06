@@ -19,4 +19,44 @@
         <item name="main_background">@color/main_fragment_bg</item>
 
     </style>
+
+    <style name="MyPictureOfTheDay_New">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <item name="fontFamily">@font/walter_turncoat</item>
+        <item name="android:fontFamily">@font/walter_turncoat</item>
+
+        <item name="main_background">@color/bg_myTheme_New</item>
+
+    </style>
+
+    <style name="Image_BG_Theme">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <item name="fontFamily">@font/walter_turncoat</item>
+        <item name="android:fontFamily">@font/walter_turncoat</item>
+
+        <item name="main_background">@drawable/cosmo_bg</item>
+
+    </style>
 </resources>
