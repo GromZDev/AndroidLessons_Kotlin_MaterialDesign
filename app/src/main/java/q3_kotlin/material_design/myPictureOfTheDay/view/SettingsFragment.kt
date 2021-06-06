@@ -71,14 +71,17 @@ class SettingsFragment : Fragment() {
     private fun changeTheme() {
         binding.buttonOne.setOnClickListener {
             activity?.setTheme(R.style.MyPictureOfTheDay_New)
-
+            Toast.makeText(context, "You selected MyPictureOfTheDay_New Theme!", Toast.LENGTH_SHORT)
+                .show()
         }
         binding.buttonTwo.setOnClickListener {
             activity?.setTheme(R.style.Theme_MyPictureOfTheDay)
-
+            Toast.makeText(context, "You selected Theme_MyPictureOfTheDay!", Toast.LENGTH_SHORT)
+                .show()
         }
         binding.buttonChangeBgToImage.setOnClickListener {
             activity?.setTheme(R.style.Image_BG_Theme)
+            Toast.makeText(context, "You selected Image_BG_Theme!", Toast.LENGTH_SHORT).show()
         }
     }
 }
