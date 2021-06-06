@@ -1,0 +1,44 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/settings_fragment_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?main_background">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tw_settings"
+        style="@style/My_Settings_Text_View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_one"
+        style="@style/My_Settings_Button"
+        android:text="@string/set_one_theme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tw_settings" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_two"
+        style="@style/My_Settings_Button"
+        android:text="@string/set_second_theme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_one" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_change_bg_to_image"
+        style="@style/My_Settings_Button"
+        android:layout_height="wrap_content"
+        android:text="@string/set_image_as_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_two" />
+
+    <include
+        android:id="@+id/includedBottomBarLayoutSettings"
+        layout="@layout/bottom_bar_layout_settings" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

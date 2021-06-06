@@ -1,7 +1,8 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?main_background">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -11,23 +12,11 @@
             android:id="@+id/main_fragment_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/main_fragment_bg"
             tools:context=".view.MainPictureFragment">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="@string/search_wiki"
-                app:boxStrokeColor="@color/white"
-                app:counterEnabled="true"
-                app:counterMaxLength="20"
-                app:counterTextColor="@color/white"
-                app:endIconCheckable="true"
-                app:endIconDrawable="@drawable/ic_baseline_check"
-                app:endIconMode="custom"
+                style="@style/My_Text_Input_Layout"
                 app:endIconTint="@color/icon_check"
                 app:helperText="@string/wiki_helper_text"
                 app:helperTextTextColor="@color/white"
@@ -39,8 +28,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/My_Input_Edit_Text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,8 +36,8 @@
                 android:id="@+id/chip_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/fragment_main_chips_layout_margin_start_end_center"
+                android:layout_marginEnd="@dimen/fragment_main_chips_layout_margin_start_end_center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/input_layout">
@@ -57,14 +45,11 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp">
+                    android:layout_marginTop="@dimen/fragment_main_chips_horizontal_scroll_margin_top">
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/chip_group"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:chipSpacingHorizontal="25dp"
-                        app:singleSelection="true">
+                        style="@style/My_Chip_Group">
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip_hd_photo"
@@ -93,12 +78,7 @@
 
             <q3_kotlin.material_design.myPictureOfTheDay.utils.EquilateralImageView
                 android:id="@+id/main_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:contentDescription="@string/main_photo"
-                android:scaleType="fitCenter"
+                style="@style/My_Equilateral_Image_View"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/chip_layout"

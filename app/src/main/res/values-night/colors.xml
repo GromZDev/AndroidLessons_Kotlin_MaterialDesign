@@ -7,29 +7,29 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="hint_text_color">#C8B827</color>
-    <color name="main_fragment_bg">#706B6B</color>
+    <color name="main_fragment_bg">#1C1C1C</color>
 
     <color name="transparent_color">#00000000</color>
 
-    <color name="bottom_bar_bg_color">#409A4F</color>
-    <color name="icon_check">#2CED4C</color>
-    <color name="fab_color">#2CED4C</color>
+    <color name="bottom_bar_bg_color">#FF018786</color>
+    <color name="icon_check">#08BAD1</color>
+    <color name="fab_color">#08BAD1</color>
     <color name="fab_app_tint">#FFFFFF</color>
     <color name="bottom_sheet_layout_background">#EAEAB6</color>
     <color name="bottom_sheet_line_background">#663b4351</color>
-    <color name="bottom_sheet_description_colo">#504949</color>
+    <color name="bottom_sheet_description_colo">#252222</color>
 
-    <color name="text_input_layout_stroke_color">#409A4F</color>
-    <color name="text_input_counter_text_color">#409A4F</color>
+    <color name="text_input_layout_stroke_color">#08BAD1</color>
+    <color name="text_input_counter_text_color">#08BAD1</color>
 
-    <color name="navigation_drawer_bg_color">#409A4F</color>
-    <color name="navigation_view_color">#409A4F</color>
+    <color name="navigation_drawer_bg_color">#08BAD1</color>
+    <color name="navigation_view_color">#08BAD1</color>
 
-    <color name="text_counter_color">#2CED4C</color>
+    <color name="text_counter_color">#08BAD1</color>
 
-    <color name="settings_button_color">#409A4F</color>
+    <color name="settings_button_color">#FF018786</color>
     <color name="settings_button_stroke_color">#505150</color>
 
-    <color name="bg_myTheme_New">#A5E45B</color>
+    <color name="bg_myTheme_New">#8C6EC1</color>
 
 </resources>

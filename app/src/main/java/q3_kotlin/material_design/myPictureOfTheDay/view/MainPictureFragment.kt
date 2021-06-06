@@ -44,7 +44,7 @@ class MainPictureFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> toast("Favourite")
-            R.id.app_bar_settings -> toast("Settings")
+            R.id.app_bar_settings -> goToSettingsFragment()
             android.R.id.home -> {
                 activity?.let {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
@@ -316,6 +316,19 @@ class MainPictureFragment : Fragment() {
                 )
             })
         bottomBar.replaceMenu(R.menu.bottom_bar_menu_not_main)
+    }
+
+    private fun goToSettingsFragment() {
+        val manager = activity?.supportFragmentManager
+                manager?.let {
+                    manager.beginTransaction()
+                        .replace(
+                            R.id.fragment_container,
+                            SettingsFragment.newInstance()
+                        )
+                        .addToBackStack("")
+                        .commit()
+                }
     }
 
 }
