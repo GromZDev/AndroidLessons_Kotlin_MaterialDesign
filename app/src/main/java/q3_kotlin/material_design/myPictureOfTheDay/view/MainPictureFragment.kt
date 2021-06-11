@@ -18,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import q3_kotlin.material_design.myPictureOfTheDay.R
 import q3_kotlin.material_design.myPictureOfTheDay.databinding.FragmentMainPictureBinding
 import q3_kotlin.material_design.myPictureOfTheDay.model.PictureServerResponseData
+import q3_kotlin.material_design.myPictureOfTheDay.view.viewPagerFragment.ViewPagerFragment
 import q3_kotlin.material_design.myPictureOfTheDay.viewModel.appState.PODAppState
 import q3_kotlin.material_design.myPictureOfTheDay.viewModel.mainViewModel.PictureOfTheDayViewModel
 
@@ -43,7 +44,7 @@ class MainPictureFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> toast("Favourite")
+            R.id.app_bar_fav -> goToViewPagerFragment()
             R.id.app_bar_settings -> goToSettingsFragment()
             android.R.id.home -> {
                 activity?.let {
@@ -329,6 +330,19 @@ class MainPictureFragment : Fragment() {
                         .addToBackStack("")
                         .commit()
                 }
+    }
+
+    private fun goToViewPagerFragment() {
+        val manager = activity?.supportFragmentManager
+        manager?.let {
+            manager.beginTransaction()
+                .replace(
+                    R.id.fragment_container,
+                    ViewPagerFragment.newInstance()
+                )
+                .addToBackStack("")
+                .commitAllowingStateLoss()
+        }
     }
 
 }
