@@ -32,4 +32,7 @@
 
     <color name="bg_myTheme_New">#A5E45B</color>
 
+    <color name="view_pager_swipe_indicator_active_color">#444542</color>
+    <color name="view_pager_swipe_indicator_inactive_color">#55444542</color>
+
 </resources>

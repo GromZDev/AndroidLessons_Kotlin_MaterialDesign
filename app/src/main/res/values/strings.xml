@@ -15,4 +15,12 @@
     <string name="set_second_theme">Set Second Theme</string>
     <string name="top_text_settings_fragment">Please select any Theme and press to confirm</string>
     <string name="set_image_as_background">Set Image as background</string>
+    <string name="fragment_mars_rover">Fragment Mars Rover</string>
+    <string name="fragment_epic">Fragment Nasa Gallery</string>
+    <string name="nasa_gallery">Nasa Gallery</string>
+    <string name="mars_rover_photo">Mars Rover Photo</string>
+    <string name="epic">Epic</string>
+    <string name="fragment_three">Fragment THREE</string>
+    <string name="fragment_epic_image">Fragment Epic</string>
+    <string name="fragment_epic_earth">Fragment Epic Earth</string>
 </resources>

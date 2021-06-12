@@ -123,4 +123,15 @@
         <item name="android:layout_marginTop">@dimen/top_text_settings_margin_fragment</item>
     </style>
 
+    <style name="My_ViewPager_Tab">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="tabGravity">center</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabRippleColor">@color/text_counter_color</item>
+        <item name="tabIndicatorColor">@color/text_counter_color</item>
+        <item name="tabIndicatorAnimationMode">linear</item>
+        <item name="tabIndicatorHeight">@dimen/tab_view_pager_indicator_width</item>
+    </style>
+
 </resources>

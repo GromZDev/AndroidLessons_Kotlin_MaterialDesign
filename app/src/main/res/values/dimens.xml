@@ -29,4 +29,6 @@
     <dimen name="top_text_settings_fragment">24sp</dimen>
     <dimen name="top_text_settings_margin_fragment">24dp</dimen>
 
+    <dimen name="tab_view_pager_indicator_width">4dp</dimen>
+
 </resources>
