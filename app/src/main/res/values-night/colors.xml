@@ -32,4 +32,8 @@
 
     <color name="bg_myTheme_New">#8C6EC1</color>
 
+    <color name="collapsing_toolbar_image">#FF018786</color>
+
+    <color name="open_me_button_color">#2CA4DA</color>
+
 </resources>

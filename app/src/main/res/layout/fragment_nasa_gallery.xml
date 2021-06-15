@@ -43,4 +43,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_fragment_nasa_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tw_description_fragment_nasa_gallery,tw_title_fragment_nasa_gallery,nasa_gallery_image_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

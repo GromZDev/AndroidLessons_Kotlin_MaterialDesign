@@ -65,7 +65,7 @@ class EpicFragment : Fragment(R.layout.fragment_epic) {
                     toast("Link is empty")
                 } else {
 
-                    binding.epicFragmentImageView.visibility = View.VISIBLE
+                    binding.groupFragmentEpic.visibility = View.VISIBLE
                     binding.epicIncludedLoadingLayout.loadingLayout.visibility = View.GONE
                     showSuccess(serverResponseData[0])
 
@@ -105,7 +105,7 @@ class EpicFragment : Fragment(R.layout.fragment_epic) {
     }
 
     private fun showLoading() {
-        binding.epicFragmentImageView.visibility = View.GONE
+        binding.groupFragmentEpic.visibility = View.GONE
         binding.epicIncludedLoadingLayout.loadingLayout.visibility = View.VISIBLE
     }
 

@@ -4,17 +4,18 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
+import com.google.android.material.behavior.SwipeDismissBehavior
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.chip.Chip
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import q3_kotlin.material_design.myPictureOfTheDay.R
 import q3_kotlin.material_design.myPictureOfTheDay.databinding.FragmentMainPictureBinding
 import q3_kotlin.material_design.myPictureOfTheDay.model.PictureServerResponseData
@@ -69,51 +70,70 @@ class MainPictureFragment : Fragment() {
 
         _binding = FragmentMainPictureBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getData().observe(viewLifecycleOwner,
-            Observer { renderData(it) })
+            { renderData(it) })
 
         setBottomSheetBehavior(binding.includedBottomSheetLayout.bottomSheetContainer)
 
-// == Юзер сможет по нажатию на иконку переходить в браузер и открывать запрос в «Википедии»: ==
         binding.inputLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data =
                     Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             })
         }
-// =============================================================================================
 
         setBottomAppBar()
 
-// =================== По нажатии кнопки показываем buttom sheet с описанием ===================
         setFabButtonToShowDetails()
-// =============================================================================================
 
-// ================= Сетим слушателя нажатия на группу Чипсов и выбираем нужное ================
-        binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
-            val chip: Chip? = group.findViewById(checkedId)
+        setAndActivateChips()
 
-            if (binding.chipHdPhoto.isChecked) {
-                chip?.let {
-                    viewModel.getData().observe(viewLifecycleOwner,
-                        Observer { showHdPhoto(it) })
-                }
+        setSwipeBehaviourInTextInputLayout() // Вьюха должна быть внутри Coordinator Layout!!!
+
+    }
+
+    private fun setSwipeBehaviourInTextInputLayout() {
+        val swipe: SwipeDismissBehavior<TextInputLayout?> = SwipeDismissBehavior<TextInputLayout?>()
+        swipe.setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_END_TO_START)
+
+        val textView = binding.inputLayout
+        val coordinatorParams: CoordinatorLayout.LayoutParams =
+            textView.layoutParams as CoordinatorLayout.LayoutParams
+        coordinatorParams.behavior = swipe
+
+        swipe.listener = object : SwipeDismissBehavior.OnDismissListener {
+            override fun onDismiss(view: View?) {
+                toast("My View Swiped !!! =)")
+
             }
-            if (binding.chipSimplePhoto.isChecked) {
-                chip?.let {
+            override fun onDragStateChanged(state: Int) {
+                toast("My View Dragged !!! =)")
+            }
+        }
+    }
+
+    private fun setAndActivateChips() {
+        binding.chipHdPhoto.setOnCheckedChangeListener { _, _ ->
+            if (binding.chipHdPhoto.isChecked) {
+                binding.chipHdPhoto.let {
                     viewModel.getData().observe(viewLifecycleOwner,
-                        Observer { renderData(it) })
+                        { showHdPhoto(it) })
                 }
             }
         }
-// =============================================================================================
-
+        binding.chipSimplePhoto.setOnCheckedChangeListener { _, _ ->
+            if (binding.chipSimplePhoto.isChecked) {
+                binding.chipSimplePhoto.let {
+                    viewModel.getData().observe(viewLifecycleOwner,
+                        { renderData(it) })
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -129,7 +149,7 @@ class MainPictureFragment : Fragment() {
                 if (hdUrl.isNullOrEmpty()) {
                     toast("Link is empty")
                 } else {
-                    if (hdUrl.contains("youtube.com")) {
+                    if (hdUrl.contains("youtube.com") || hdUrl.contains("player.vimeo.com")) {
 
                         // Если у нас видео приходит, то предлагаем открыть Ютуб!
                         startActivity(Intent(Intent.ACTION_VIEW).apply {
@@ -171,13 +191,14 @@ class MainPictureFragment : Fragment() {
                 if (url.isNullOrEmpty()) {
                     toast("Link is empty")
                 } else {
-                    if (url.contains("youtube.com")) {
+                    if (url.contains("youtube.com") || url.contains("player.vimeo.com")) {
 
                         // Если у нас видео приходит, то предлагаем открыть Ютуб!
                         startActivity(Intent(Intent.ACTION_VIEW).apply {
                             setData(Uri.parse(url))
                         })
                         binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
+                        binding.mainImageView.visibility = View.GONE
                         setDataToBottomSheet(serverResponseData)
 
                     } else {
@@ -321,15 +342,15 @@ class MainPictureFragment : Fragment() {
 
     private fun goToSettingsFragment() {
         val manager = activity?.supportFragmentManager
-                manager?.let {
-                    manager.beginTransaction()
-                        .replace(
-                            R.id.fragment_container,
-                            SettingsFragment.newInstance()
-                        )
-                        .addToBackStack("")
-                        .commit()
-                }
+        manager?.let {
+            manager.beginTransaction()
+                .replace(
+                    R.id.fragment_container,
+                    SettingsFragment.newInstance()
+                )
+                .addToBackStack("")
+                .commit()
+        }
     }
 
     private fun goToViewPagerFragment() {

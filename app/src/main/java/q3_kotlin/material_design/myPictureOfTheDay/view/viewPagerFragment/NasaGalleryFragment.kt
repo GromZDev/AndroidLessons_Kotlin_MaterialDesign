@@ -52,8 +52,7 @@ class NasaGalleryFragment : Fragment(R.layout.fragment_nasa_gallery) {
             is NasaGalleryAppState.Success -> {
                 val serverResponseData = data.serverResponseData
 
-                binding.nasaGalleryImageView.visibility = View.VISIBLE
-                binding.twDescriptionFragmentNasaGallery.visibility = View.VISIBLE
+                binding.groupFragmentNasaGallery.visibility = View.VISIBLE
                 binding.includedLoadingLayoutNasaGallery.loadingLayout.visibility = View.GONE
 
                 showSuccessNasaGallery(serverResponseData)
@@ -81,7 +80,7 @@ class NasaGalleryFragment : Fragment(R.layout.fragment_nasa_gallery) {
     }
 
     private fun showLoadingNasaGallery() {
-        binding.nasaGalleryImageView.visibility = View.GONE
+        binding.groupFragmentNasaGallery.visibility = View.GONE
         binding.includedLoadingLayoutNasaGallery.loadingLayout.visibility = View.VISIBLE
     }
 

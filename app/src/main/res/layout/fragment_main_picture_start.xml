@@ -1,0 +1,106 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?main_background">
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_main_picture_scene">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/wiki_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_open_me" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_fragment_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="120dp"
+            tools:context=".view.MainPictureFragment">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout"
+                style="@style/My_Text_Input_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconTint="@color/icon_check"
+                app:helperText="@string/wiki_helper_text"
+                app:helperTextTextColor="@color/white"
+                app:hintTextColor="@color/hint_text_color"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/chip_hd_photo"
+                app:startIconTintMode="multiply">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_edit_text"
+                    style="@style/My_Input_Edit_Text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_hd_photo"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/show_hd_photo"
+                android:visibility="invisible"
+                app:chipBackgroundColor="@color/hint_text_color"
+                app:chipIcon="@mipmap/ic_app_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/chip_simple_photo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/teal_700" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_simple_photo"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/show_simple_photo"
+                android:visibility="invisible"
+                app:chipBackgroundColor="@color/hint_text_color"
+                app:chipIcon="@mipmap/ic_app_icon"
+                app:layout_constraintEnd_toStartOf="@+id/chip_hd_photo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/teal_700" />
+
+            <q3_kotlin.material_design.myPictureOfTheDay.utils.EquilateralImageView
+                android:id="@+id/main_image_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chip_hd_photo"
+                app:srcCompat="@drawable/ic_no_photo_img" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+    <include
+        android:id="@+id/includedLoadingLayout"
+        layout="@layout/loading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include
+        android:id="@+id/includedBottomSheetLayout"
+        layout="@layout/bottom_sheet_layout" />
+
+    <include
+        android:id="@+id/includedBottomBarLayout"
+        layout="@layout/bottom_bar_layout" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

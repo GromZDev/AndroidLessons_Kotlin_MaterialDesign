@@ -35,4 +35,9 @@
     <color name="view_pager_swipe_indicator_active_color">#444542</color>
     <color name="view_pager_swipe_indicator_inactive_color">#55444542</color>
 
+    <color name="collapsing_toolbar_image">#2CED4C</color>
+
+    <color name="open_me_button_color">#2CA4DA</color>
+
+
 </resources>
