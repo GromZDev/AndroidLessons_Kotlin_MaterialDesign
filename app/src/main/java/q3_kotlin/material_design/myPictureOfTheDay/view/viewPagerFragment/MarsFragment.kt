@@ -67,7 +67,7 @@ class MarsFragment : Fragment(R.layout.fragment_mars) {
                     toast("Link is empty")
                 } else {
 
-                    binding.marsFragmentImageView.visibility = View.VISIBLE
+                    binding.groupFragmentMars.visibility = View.VISIBLE
                     binding.includedLoadingLayout.loadingLayout.visibility = View.GONE
                     showSuccess(url)
 
@@ -101,7 +101,7 @@ class MarsFragment : Fragment(R.layout.fragment_mars) {
     }
 
     private fun showLoading() {
-        binding.marsFragmentImageView.visibility = View.GONE
+        binding.groupFragmentMars.visibility = View.GONE
         binding.includedLoadingLayout.loadingLayout.visibility = View.VISIBLE
     }
 

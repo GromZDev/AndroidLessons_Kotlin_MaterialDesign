@@ -35,7 +35,7 @@
 
     <style name="My_Equilateral_Image_View">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginTop">@dimen/equilateral_Image_View_margin_top</item>
         <item name="android:contentDescription">@string/main_photo</item>

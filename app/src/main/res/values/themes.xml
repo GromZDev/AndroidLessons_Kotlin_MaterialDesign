@@ -17,6 +17,7 @@
         <item name="android:fontFamily">@font/walter_turncoat</item>
 
         <item name="main_background">@color/main_fragment_bg</item>
+        <item name="collapsing_image_background_epic_fragment">@color/collapsing_toolbar_image</item>
 
     </style>
 
@@ -37,6 +38,7 @@
         <item name="android:fontFamily">@font/walter_turncoat</item>
 
         <item name="main_background">@color/bg_myTheme_New</item>
+        <item name="collapsing_image_background_epic_fragment">@color/collapsing_toolbar_image</item>
 
     </style>
 
@@ -57,6 +59,8 @@
         <item name="android:fontFamily">@font/walter_turncoat</item>
 
         <item name="main_background">@drawable/cosmo_bg</item>
+
+        <item name="collapsing_image_background_epic_fragment">@color/bottom_sheet_description_colo</item>
 
     </style>
 </resources>
