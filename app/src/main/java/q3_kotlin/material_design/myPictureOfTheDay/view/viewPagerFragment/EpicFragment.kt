@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import q3_kotlin.material_design.myPictureOfTheDay.BuildConfig
@@ -42,7 +41,8 @@ class EpicFragment : Fragment(R.layout.fragment_epic) {
         super.onViewCreated(view, savedInstanceState)
 
         epicViewModel.getData(getYesterdayData().toString()).observe(viewLifecycleOwner,
-            Observer { renderEpicData(it) })
+            { renderEpicData(it) })
+
     }
 
     override fun onDestroyView() {
