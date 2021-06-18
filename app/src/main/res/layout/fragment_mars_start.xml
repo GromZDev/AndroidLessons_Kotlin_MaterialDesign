@@ -1,38 +1,43 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraint_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?main_background">
 
     <q3_kotlin.material_design.myPictureOfTheDay.utils.EquilateralImageView
         android:id="@+id/mars_fragment_image_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tw_title_fragment_mars" />
+        app:layout_constraintTop_toBottomOf="@id/tw_title_fragment_mars" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tw_title_fragment_mars"
         android:layout_width="240dp"
         android:layout_height="80dp"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:background="#BAED43"
         android:text="@string/fragment_mars_rover"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintCircleRadius="30dp"
+        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tw_description_fragment_mars"
         android:layout_width="240dp"
         android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_marginTop="-20dp"
+        android:background="@drawable/bg_animation_form_tw"
         android:text="@string/fragment_mars_rover"
         android:textSize="16sp"
-        android:layout_marginTop="420dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mars_fragment_image_view" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tw_show_fragment_mars"
@@ -40,13 +45,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
-        android:backgroundTint="@color/teal_700"
         android:text="@string/more"
         android:textColor="@color/text_counter_color"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/mars_fragment_image_view"
-        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/mars_fragment_image_view"
+        app:layout_constraintStart_toStartOf="@id/mars_fragment_image_view"
         app:layout_constraintTop_toTopOf="@id/mars_fragment_image_view" />
 
     <include

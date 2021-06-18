@@ -2,38 +2,49 @@ package q3_kotlin.material_design.myPictureOfTheDay.view.viewPagerFragment
 
 import android.os.Build
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.TransitionManager
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import q3_kotlin.material_design.myPictureOfTheDay.R
-import q3_kotlin.material_design.myPictureOfTheDay.databinding.FragmentMarsBinding
+import q3_kotlin.material_design.myPictureOfTheDay.databinding.FragmentMarsStartBinding
 import q3_kotlin.material_design.myPictureOfTheDay.model.MarsRoverPhotosData
 import q3_kotlin.material_design.myPictureOfTheDay.viewModel.appState.MarsRoverAppState
 import q3_kotlin.material_design.myPictureOfTheDay.viewModel.mainViewModel.MarsRoverViewModel
 import java.time.LocalDate
 import java.util.*
 
-class MarsFragment : Fragment(R.layout.fragment_mars) {
+class MarsFragment : Fragment(R.layout.fragment_mars_start) {
 
-    private var _binding: FragmentMarsBinding? = null
+    private var _binding: FragmentMarsStartBinding? = null
     private val binding get() = _binding!!
 
     private val marsViewModel: MarsRoverViewModel by lazy {
         ViewModelProvider(this).get(MarsRoverViewModel::class.java)
     }
 
+    private var show = false // флаг для анимации
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMarsBinding.inflate(inflater, container, false)
+        _binding = FragmentMarsStartBinding.inflate(inflater, container, false)
+
+        binding.marsFragmentImageView.setOnClickListener {
+            if (show) hideComponents() else
+                showComponents()
+        }
+
         return binding.root
     }
 
@@ -43,7 +54,7 @@ class MarsFragment : Fragment(R.layout.fragment_mars) {
 
 //==================== Для отображения фото передаём вчерашнюю дату! ==================
         marsViewModel.getData(getYesterdayData().toString()).observe(viewLifecycleOwner,
-            Observer { renderMarsData(it) })
+            { renderMarsData(it) })
 //=====================================================================================
     }
 
@@ -51,6 +62,32 @@ class MarsFragment : Fragment(R.layout.fragment_mars) {
         super.onDestroyView()
         _binding = null
     }
+
+    //============================ Для отображения Анимации! ==========================
+    private fun showComponents() {
+        show = true
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(context, R.layout.fragment_mars)
+        val transition = ChangeBounds()
+        transition.interpolator = AnticipateOvershootInterpolator(1.0f)
+        transition.duration = 1200
+        TransitionManager.beginDelayedTransition(binding.constraintContainer,
+            transition)
+        constraintSet.applyTo(binding.constraintContainer)
+    }
+
+    private fun hideComponents() {
+        show = false
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(context, R.layout.fragment_mars_start)
+        val transition = ChangeBounds()
+        transition.interpolator = AnticipateOvershootInterpolator(1.0f)
+        transition.duration = 1200
+        TransitionManager.beginDelayedTransition(binding.constraintContainer,
+            transition)
+        constraintSet.applyTo(binding.constraintContainer)
+    }
+//=====================================================================================
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getYesterdayData(): LocalDate? {

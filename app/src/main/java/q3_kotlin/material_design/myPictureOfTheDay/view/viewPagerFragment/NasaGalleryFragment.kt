@@ -1,15 +1,19 @@
 package q3_kotlin.material_design.myPictureOfTheDay.view.viewPagerFragment
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.transition.*
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import q3_kotlin.material_design.myPictureOfTheDay.R
@@ -28,6 +32,10 @@ class NasaGalleryFragment : Fragment(R.layout.fragment_nasa_gallery) {
         ViewModelProvider(this).get(NasaGalleryViewModel::class.java)
     }
 
+    private var isExpanded = false // для анимашки увеличения фото
+    private var toRightAnimation = false // для анимации движения текстполя
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +53,61 @@ class NasaGalleryFragment : Fragment(R.layout.fragment_nasa_gallery) {
         nasaGalleryViewModel.getData().observe(viewLifecycleOwner,
             { renderNasaGalleryData(it) })
 
+// ========================= Сетим увеличение фото ========================
+        setImageAnimationExpand()
+// ========================================================================
+
+// ======================== Сетим увеличение текста =======================
+        setTextViewAnimation()
+// ========================================================================
+
+    }
+
+    private fun setTextViewAnimation() {
+        binding.twDescriptionFragmentNasaGallery2.setOnClickListener {
+            val changeBounds = ChangeBounds()
+            changeBounds.pathMotion = ArcMotion()
+            changeBounds.duration = 800
+            TransitionManager.beginDelayedTransition(
+                binding.twDescriptionFragmentNasaGallery,
+                changeBounds
+            )
+            toRightAnimation = !toRightAnimation
+            val size = binding.twDescriptionFragmentNasaGallery2 as TextView
+            val params =
+                binding.twDescriptionFragmentNasaGallery2.layoutParams as FrameLayout.LayoutParams
+
+            if (toRightAnimation) {
+                params.gravity = Gravity.TOP
+                size.setTextColor(Color.GREEN)
+            } else {
+                params.gravity = Gravity.CENTER
+                size.setTextColor(Color.DKGRAY)
+            }
+
+
+            binding.twDescriptionFragmentNasaGallery2.layoutParams = params
+        }
+    }
+
+    private fun setImageAnimationExpand() {
+        val imageView = binding.nasaGalleryImageView
+        imageView.setOnClickListener {
+            isExpanded = !isExpanded
+            TransitionManager.beginDelayedTransition(
+                binding.container, TransitionSet()
+                    .addTransition(ChangeBounds())
+                    .addTransition(ChangeImageTransform())
+            )
+            val params: ViewGroup.LayoutParams = imageView.layoutParams
+            params.height =
+                if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            imageView.layoutParams = params
+            imageView.scaleType =
+                if (isExpanded) ImageView.ScaleType.CENTER_CROP else
+                    ImageView.ScaleType.FIT_CENTER
+        }
     }
 
     private fun renderNasaGalleryData(data: NasaGalleryAppState?) {
