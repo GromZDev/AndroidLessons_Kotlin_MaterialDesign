@@ -19,6 +19,7 @@ import com.google.android.material.textfield.TextInputLayout
 import q3_kotlin.material_design.myPictureOfTheDay.R
 import q3_kotlin.material_design.myPictureOfTheDay.databinding.FragmentMainPictureBinding
 import q3_kotlin.material_design.myPictureOfTheDay.model.PictureServerResponseData
+import q3_kotlin.material_design.myPictureOfTheDay.view.notesFragment.NotesFragment
 import q3_kotlin.material_design.myPictureOfTheDay.view.viewPagerFragment.ViewPagerFragment
 import q3_kotlin.material_design.myPictureOfTheDay.viewModel.appState.PODAppState
 import q3_kotlin.material_design.myPictureOfTheDay.viewModel.mainViewModel.PictureOfTheDayViewModel
@@ -45,6 +46,7 @@ class MainPictureFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.notes_fav -> goToNotesFragment()
             R.id.app_bar_fav -> goToViewPagerFragment()
             R.id.app_bar_settings -> goToSettingsFragment()
             android.R.id.home -> {
@@ -360,6 +362,19 @@ class MainPictureFragment : Fragment() {
                 .replace(
                     R.id.fragment_container,
                     ViewPagerFragment.newInstance()
+                )
+                .addToBackStack("")
+                .commitAllowingStateLoss()
+        }
+    }
+
+    private fun goToNotesFragment() {
+        val manager = activity?.supportFragmentManager
+        manager?.let {
+            manager.beginTransaction()
+                .replace(
+                    R.id.fragment_container,
+                    NotesFragment.newInstance()
                 )
                 .addToBackStack("")
                 .commitAllowingStateLoss()

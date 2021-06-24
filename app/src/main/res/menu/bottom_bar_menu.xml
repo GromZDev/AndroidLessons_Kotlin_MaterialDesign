@@ -1,5 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/notes_fav"
+        android:icon="@drawable/ic_notes"
+        android:title="@string/my_notes"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/app_bar_fav"
         android:icon="@drawable/ic_favorite_picture_menu"
