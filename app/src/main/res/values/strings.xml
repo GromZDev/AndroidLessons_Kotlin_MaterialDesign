@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MyPictureOfTheDay</string>
     <string name="main_photo">Main Photo Of The Day</string>
-    <string name="wiki_helper_text">Type Here smth to see it in wiki</string>
+    <string name="wiki_helper_text">Type Here to see it in wiki</string>
     <string name="search_wiki">Search Wiki</string>
     <string name="fab">Center Button FAB</string>
     <string name="favourite">Любимые</string>
@@ -25,4 +25,9 @@
     <string name="fragment_epic_earth">Fragment Epic Earth</string>
     <string name="fab_in_epic_fragment">FAB in Epic Fragment</string>
     <string name="more">Подробнее</string>
+    <string name="my_notes">My Notes</string>
+    <string name="notes_fab">Notes FAB</string>
+    <string name="save">Save</string>
+    <string name="my_notes_text">Мои заметки</string>
+    <string name="note_image">Note image</string>
 </resources>
