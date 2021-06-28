@@ -1,8 +1,12 @@
 package q3_kotlin.material_design.myPictureOfTheDay.view
 
 import android.content.Intent
+import android.graphics.*
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.*
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +23,8 @@ import com.google.android.material.textfield.TextInputLayout
 import q3_kotlin.material_design.myPictureOfTheDay.R
 import q3_kotlin.material_design.myPictureOfTheDay.databinding.FragmentMainPictureBinding
 import q3_kotlin.material_design.myPictureOfTheDay.model.PictureServerResponseData
+
+
 import q3_kotlin.material_design.myPictureOfTheDay.view.notesFragment.NotesFragment
 import q3_kotlin.material_design.myPictureOfTheDay.view.viewPagerFragment.ViewPagerFragment
 import q3_kotlin.material_design.myPictureOfTheDay.viewModel.appState.PODAppState
@@ -281,10 +287,29 @@ class MainPictureFragment : Fragment() {
 // ========================================================================================
 
     private fun setDataToBottomSheet(serverResponseData: PictureServerResponseData) {
-        binding.includedBottomSheetLayout.bottomSheetDescriptionHeader.text =
-            serverResponseData.title
+
         binding.includedBottomSheetLayout.bottomSheetDescription.text =
             serverResponseData.explanation
+
+// ================================ сетим текст через span ================================
+        val spannableTextTitle = SpannableString(serverResponseData.title)
+        spannableTextTitle.setSpan(
+            ForegroundColorSpan(Color.BLUE),
+            0,
+            1,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        ).let {
+            spannableTextTitle.setSpan(
+                ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.bottom_bar_bg_color)),
+                spannableTextTitle.length-3,
+                spannableTextTitle.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+
+        binding.includedBottomSheetLayout.bottomSheetDescriptionHeader.text = spannableTextTitle
+
+// ========================================================================================
     }
 
     private fun setFabButtonToShowDetails() {
