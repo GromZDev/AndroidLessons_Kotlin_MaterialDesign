@@ -1,0 +1,34 @@
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraint_container_ss"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cosmo"
+    app:layoutDescription="@xml/activity_splash_screen_start_scene">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_view_splash_screen"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:text="@string/my_picture_of_the_day"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_view_splash_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_splash_screen"
+        app:srcCompat="@drawable/planet_sc" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

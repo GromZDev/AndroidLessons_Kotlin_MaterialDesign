@@ -53,7 +53,7 @@ class EpicFragment : Fragment(R.layout.fragment_epic) {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getYesterdayData(): LocalDate? {
         val date = LocalDate.now()
-        return date.minusDays(1)
+        return date.minusDays(2)
     }
 
     private fun renderEpicData(data: EpicAppState) {

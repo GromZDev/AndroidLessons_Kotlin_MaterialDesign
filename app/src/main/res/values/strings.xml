@@ -30,4 +30,5 @@
     <string name="save">Save</string>
     <string name="my_notes_text">Мои заметки</string>
     <string name="note_image">Note image</string>
+    <string name="my_picture_of_the_day">My Picture Of The Day</string>
 </resources>
