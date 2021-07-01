@@ -16,14 +16,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import q3_kotlin.material_design.myPictureOfTheDay.R
 
-class SplashScreenActivity : AppCompatActivity() {
-
-    //   private var handler = Handler()
+class SplashScreenActivity : AppCompatActivity(R.layout.activity_splash_screen_start) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen_start)
-
 
         val image = findViewById<ImageView>(R.id.image_view_splash_screen)
 
