@@ -92,7 +92,7 @@ class MarsFragment : Fragment(R.layout.fragment_mars_start) {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getYesterdayData(): LocalDate? {
         val date = LocalDate.now()
-        return date.minusDays(1)
+        return date.minusDays(2)
     }
 
     private fun renderMarsData(data: MarsRoverAppState) {

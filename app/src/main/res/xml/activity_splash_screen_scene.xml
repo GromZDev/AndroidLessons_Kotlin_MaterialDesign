@@ -1,0 +1,11 @@
+<MotionScene xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@layout/activity_splash_screen_start"
+        motion:constraintSetEnd="@layout/activity_splash_screen"
+        motion:duration="2000">
+
+        <OnClick motion:targetId="@+id/image_view_splash_screen" />
+
+    </Transition>
+</MotionScene>
